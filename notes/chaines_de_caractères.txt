@@ -1,0 +1,34 @@
+----------------------------LES CHAÎNES DE CARACTERES --------------------------------
+
+Avant tout, il est à noter que les chaînes de caractères n'existent pas en C.
+Les chaînes de caractères sont en générales un ensemble d'octets terminés par un
+octet ayant pour valeur 0.
+
+Attention : à partir de cet instant , il faut à tout prix maîtriser la table ASCII.
+
+instruction : char c;
+              c = '0';
+              printf("%d", c);
+              => 48 qui est la valeur ASCII associé au caractère '0';
+              
+instruction : char c;
+              c = 0;
+              printf("%d", c);
+              => 0 sera afficher en sortie standard car on affecte au caractère c le 
+                 premier élément dans la table ASCII;
+              => Ainsi (c = 0) == (c = '\0');
+
+Une chaîne de caractère est un ensemble de caractère qui se termine par '\0';
+Ce qui nous permet de déduire qu'une chaîne de caractère est un tableau de caractère
+dont le dernier élément du tableau est le caractère "\0";
+
+A retenir : Les caractère sont des pointeurs qui pointe vers l'adresse d'un caractère dans
+le code ASCII.
+
+instruction : char *str;
+              str = "lol";
+              printf("%c %s", *str, str);
+
+interprétation : 
+              
+

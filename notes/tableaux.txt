@@ -1,0 +1,47 @@
+----------------------------------LES TABLEAUX-----------------------------------
+
+Stack (=pile) : Système d'adressage dans la mémoire à laquelle on stocke les valeurs 
+(=variables) à partir du haut et succéssivement vers le bas.
+C'est à dire que les adresses sont distribués d'en haut pour chaque élément.
+
+instruction : int tab[3];
+Lorsqu'on exécute cette instruction, on demande au programme de nous allouer sur la Stack
+03 entiers de manière consécutif. On constate ensuite que tab est un pointeur sur int qui possède l'adresse 
+possède l'adresse du premier int.
+
+Vérification : printf("%p", tab);
+                => cela va nous renvoyer l'adresse du premier int que l'on a allouer dans
+                    la Stack.
+                => tab == &tab[0];
+
+En guise de conclusion, tab n'existe pas du tout, mais il permet uniquement d'identifier
+le premier élément allouer dans la stack.
+
+Vérification : int a;
+               int tab[3];
+               tab = &a;
+               => Cela devrait renvoyer une erreur car tab n'est pas accéssible en 
+                  écriture (remplacer l'adresse du premier élément vers une autre adresse).
+
+A retenir : le nom du tableau que l'on a initialiser n'est qu'un pointeur vers le 
+            premier élément de notre tableau.
+
+
+Les mêmes règles de bases des pointeurs peuvent alors être appliqués aux nom des tableaux.
+
+Vérification : int tab[3];
+               tab[0] = 42;
+               printf("%d", *tab);
+               => Logiquement, cela va afficher le premier élément de nombre tableau
+               => Ainsi *tab == tab[0]
+
+Donc cela nous est utile car on peut directement accèder à tous les éléments de notre 
+tableau à partir des pointeurs.
+
+Vérification : int tab[5];
+               tab[1] = 154;
+               printf("%d", *(tab + 1));
+               =>Cela affichera la valeur du second élément de notre tableau.
+               =>Ainsi tab[1] == *(tab + 1)
+               => c à d : tab[n] == *(tab + n)
+

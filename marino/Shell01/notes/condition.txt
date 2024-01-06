@@ -1,0 +1,82 @@
+-------------LES CONDITIONS SOUS LES INTERPRETEURS---------------------------------------
+
+SHELL : Interface entre l'utilisateur et le système d'exploitation 
+L'utilisateur entre les commandes qui sont ensuite interprétés par le Shell
+et renvoye un résltat.
+
+En général, un programme dispose :
+	-une entrée standard : stdin  ->le clavier, la souris -> 0 
+	-une sortie standard : stdout ->la sorite des messages dans l'écran -> 1
+	-une sortie d'erreur standard :stderr -> la sortie des erreurs dans l'écran -> 2
+
+Redirection : peremettent de rediregrer un des trois descripteurs de fichier vu 
+
+
+-----------------------------------------------------------------------------------------
+commande1 && commande2 : permet d'exécuter la commande1 et la commande2
+succéssivement et exécutera la commande2 si et seulement si la comme1 a
+été éxécuté correctement.
+	->La commande1 sera exécutée mais la commande2 ne sera jamais 
+exécuté si la commande1 n'est pas logique.
+
+commande1 || commande2 : perment d'éxécuter la commande1 et la commande2
+de manière succéssive et éxécuter l'une des deux commandes au moins si une
+de ces commandes est logique(renvoye TRUE = 1).
+	->La commande2 sera exécutée même si la commande1 n'est pas logique.
+
+commande1 | commande2 : affecter la sortie standard de la première commande
+avec le resultat de la deuxième commande
+
+--------------La commande find --------------------------------------------
+La commande find permet de rechercher des fichiers en partant tu répertoire indiqué
+Elle a comme paramètre : 
+	->find [repertoire] [paramètre] 
+	ex : find . -name "*.sh" -print
+
+Pour indiquer un ordre de priorité à différents paramètres de la commande find,
+nous pouvons utilisé l'astuce :
+
+	->find [répertoire] \( -options "value" -o -options1 "value" \) 
+	NB: -o permet de délimiter les différents paramètres
+
+Pour appliquer des commandes au fichiers , il existe l'option -exec [commande] '{}' \;
+
+		-exec : permet d'exécuter des commandes sur les fichiers
+		-[commande] : la commande a éxécuter
+		-{} : remplacer par les noms des fichiers séléctionner
+		- \; : Terminaison de l'option executeur de commande
+
+----------la commande wc ------------------------------------------------------------------------
+La commande wc permet d'obtenir plusieurs informations de l'entrée standard ou d'une liste
+de fichiers  : le nombre de lignes  (plus précisément le nombre de retour à la lgineà, le nombre
+de mots comme son nom l'indique.
+
+Les paramètres :
+	-> -l : imprimez le nombre de lignes
+	-> -w : imprimez le nombre de mots
+	-> -m : imprimez le nombre de caractères
+	-> -c : imprimez le nombre d'octets
+	-> -L , imrprimez la longueur de la ligne la plus longue
+
+------------la commande grep -------------------------------------------------------------------
+Pour pouvoir rechercher ou valider une adresse MAC avec une commande shell, il est à noter que 
+grep est capable de supporter ce que l'on entend par "Expression régulière"
+
+->Création de l'expression régulière :
+	-adresse MAC : XX:XX:XX:XX:XX:XX (6 champs de 02 caractères avec : comme séparateur )
+	-cela est équivaut  5 blocs de 2 caractères suitit du : avec à la fin un bloc de 2 caractères
+	-comme nos blocs contiennet 2 caractères hexadécimal il faut prendre en compte cela
+	
+Application :
+	->spécifier les expressions régulières de 0 à 9 : [0-9]
+	->spécifier les lettres de A à F : [A-F]
+	->combiner les 02 spécifications et ajout des miniscules : [0-9a-fA-F]
+	->Indiquer dans l'expression régulière le nombre d'occurence que nous cherchons car on sait 
+	que nos blocs sont toujours constitués de 02 caractères: [0-9a-fA-F]{2}
+	->indiquer  le séparateur ":" étant un caractère spéciaux en expression régulière,il faut
+	l'échapper avec "\" : [0-9a-fA-f]{2}\:
+	->spécifier que le premier bloc dans une adresse mac est présent 5 fois de suite: c-à-d
+	que le bloc doit être vu 5 fois de suite, ainsi pour délimiter un bloc, on utilise les
+	parenthèses : ([0-9a-fA-F]{2}\:){5}
+	->créer le deuxième bloc de l'expression régulière : [0-9a-fA-F]{2}
+	->ainsi, on a : ([0-9a-fA-F]{5}\:)[0-9a-fA-F]{2}

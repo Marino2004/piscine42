@@ -1,0 +1,34 @@
+-----LES UTILISATEURS ET LES GROUPES SOUS LINUX---------------
+
+-Sous linux, tous les fichiers et dossiers appartiennent à un seul
+et unique utilisateur.
+	->cat /etc/passwd : afficher tous les utilisateurs dans l' OS
+-Dans cette commande, on peut constater qu'il y a probablement des 
+utilsateurs humains ainsi que des utilisateurs machine.
+
+-On peut créer autant d'utilsateurs que l'on veut sur Linux, et les 
+répartir dans des groupes.
+Un groupe est regroupement de plusieurs utilisateurs, permettant 
+ensuite d'appliquer des règles à tout les utilisateurs d'un même 
+groupe d'un coup.
+NB: Par défaut, chaque utilisateur se trouve dans un groupe qui porte
+le même nom que l'utilisateur, c'est ce qu'on appelle en général :
+GROUPE PRIMAIRE. Mais, un utilisateur peut-être ajouté à pusieurs groupes.
+ex: L'utilisateur X  se trouve aussi dans le groupe Bluetooth  qui le permet
+ainsi d'utiliser bleutooth sur l'ordinateur.
+
+-Les UID et GID sont les identifiants des utilisateurs et des groupes.
+L'OS ne manipule pas directement des noms textuels, mais des identifiants numériques.
+ex: kyane:x:1000:1000:Kyane,,,:/home/kyane/usr/bin/zsh
+	1->kyane : nom d'utilisateur
+	2->1000: UID
+
+-La commande id perment d'obtenir très simplement une information sur l'utilisateur connecté
+	->id
+	output : uid=101275(mtodizar) gid=4223(2023_42campus) groups =4223(2023_42campus),204 (dev)
+
+	1->uid=101275 et nom d'utilisateur mtodizar 
+	2->gid=4223   et nom du groupe
+	3->liste des groupes (nom et gid) appartenant à l'utilisateur.
+		->4223(2023_42campus), 204(developer)
+

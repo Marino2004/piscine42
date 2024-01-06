@@ -1,0 +1,33 @@
+-------------------------LES POINTEURS--------------------------------------------------------------------
+C'est la notion la plus importante dans le langage C.
+Il faut à tout prix comprendre ce qui se passe dans la mémoire.
+    ex : lorsqu'on déclare une variable de type entier,  on demande au OS de nous réserver un emplacement
+    mémoire de 4 octets, et s'il trouve une de libre, il vas nous allouer cet espace et nous pouvons y stocker
+    une valeur.
+
+Dans la mémoire vive (RAM), on ne voit que 2 choses :
+    -l'adresse en héxadécimale : 0x000FFA1
+    -la valeur de la variable auquel on a alloué un emplacement mémoire
+    -le nom de la variable permet l'identification pour la manipulation des variables au sein du programme
+
+
+Portée de variables : Une variable locale (créer et existe dans une fonction) est détruite à la fin de la fonction
+Principe du passage par valeur : On envoye des valeurs de variables de la fonction main dans les paramètres d'une fonction
+, on fait la copie de ces valeurs au sein de la fonction sans modifier son ancienne valeur.
+
+Un pointeur : c'est une variable qui contient l'adresse (mémoire) d'une autre variable.
+
+[VARIABLES]
+
+    => maVariable  : accéder à la valeur de la variable ("%d")
+    => &maVariable : accéder à l'adresse de la variable ("%p")
+
+Principe du passage par adresse : Identifier les varaibles par leurs adresses afin de les manipuler.
+
+[POINTEURS]
+    => monPointeur : adresse de la variable pointé.
+    => *monPointeur : valeur de la variable pointé.
+    => &monPointeur : adresse du pointeur.
+
+Rôles des pointeurs : modifier les données dans une fonction.
+

@@ -1,0 +1,25 @@
+
+-----------------------------LES TABLEAUX---------------------------------
+
+Déclaration d'un tableau : <type> <nom_tableau> <taille>
+
+Dans la mémoire : le tableau déclarer va allouer la mémoire de manière consécutive selon la taille.
+
+Le <nom_tableau> va pointer vers l'adresse du premier élément du tableau.
+
+Pour accéder à une case du tableau, il suffit d'indiquer le nom du tableau déclarer suivi de son
+indice.
+	ex : tableau[0] : premier élément
+		 tableau[n] : n + 1  élément
+
+Pour initialiser un tableau en général, on peut utiliser la synthaxe suivante :
+
+	ex : int tableau[5] = {1 , 2, -44, 6, 0};
+		 int tableau[5] = {0}; //affecter la même valeur pour toute les cases allouers
+		 int tableau[5] = {4}; //toutes les cases ont la valeur à 0 sauf la première case
+
+Pour parcourir les valeurs d'un tableau , on peut utiliser la synthaxe suivante :
+
+	tableau        ==   adresse du premier élément d'un tableau
+	*tableau       ==   valeur du premier élément d'un tableau
+	*(tableau + n) ==   valeur du nième élément d'un tableau

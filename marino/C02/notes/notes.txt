@@ -1,0 +1,57 @@
+--------------------------------------------C02-------------------------------------------
+
+-La fonction strcpy :
+	Prototype : char	*ft_strcpy(char *dest, char *src);
+	Rôle      : Cette fonction effectue la copie d'une chaîne de caractères dans une autre
+				chaîne de caractère.C'est à dire que tout caractère contenu dans la source
+				sera affecté à la destination étant donnée que ce sont des chaînes de cara
+				-ctères.
+
+	Rappel    : Une chaîne de caractère est un tableau de caractères dont le dernier élément
+				du tableau est forcement le caractère null étant "\0".
+				Comme il s'agit d'un tableau de caractère, on peut conclure que dans la mémoire
+				les éléments sont assignés de manière succéssive et consécutive du haut vers le 
+				bas (Stack) ainsi le nom du tableau désigne l'adresse du premier élément du tab
+				-leau : &tab[0] == tab
+
+	
+	Attention : Dans le cas général des test, il faut s'en rendre compte de la différence entre la
+				déclaration des tableaux.
+			
+				*tableau = "déclaration"; != tableau[] = "déclaraton";
+		
+				dans la première instruction : après la déclaration, chaque élément du talbleau
+				n'est plus accéssible en écriture alors que dans la deuxième instruction, c'est 
+				le cas contraire.
+
+				ex : *tableau = "Maya";
+					 tableau[0] = 'N';
+					=> ./segmentation error
+
+					 tableau[] = "Maya";
+					 tableau[3] = 'r';
+					=> tbaleau = "Mara" //sans erreur durant la compilation. 
+
+---------------------------------------------------------------------------------------------
+
+-La fonction strncpy : 
+	Prototype : char *ft_strncpy(char *dest, char *src, unsigned int n);
+	Rôle      : Cette fonction permet de copier le contenu d'une chaîne de caractère dans un
+				autre comme la fonction strcpy mais à l'exception que l'on doit impérativement 
+				préciser la taille définissant ainsi la limite de caractère à copier.
+
+	NB 		  : 
+			***1er cas : Si la chaîne source a une taille inférieure à celle spécifiée en paramè
+						 -tre (unsigned int n), alors la chaîne de destination sera compélétée
+				 		 avec le caractère nulle '\0';
+
+			***2e cas : Si la chaîne source a une taille supérieure à celle spécifiée en paramètre
+						, alors la chaîne produite ne sera pas terminée par un code ASCII nul.
+
+			***3e cas : Si la chaîne source a une taille égale à celle spécifiée en paramètre,
+						alors la chaîne source sera intégralement copiée y compris le caractère 
+						null.
+
+-Le type unsigned int : il s'agit d'un type d'entier non signé, c'est à dire que les valeurs ne peuvent
+						être positif ou null : V! IN £ [0 - +oo]
+
